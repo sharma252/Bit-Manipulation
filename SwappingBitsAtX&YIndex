@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define F(i, L, R) for (int i = L; i < R; i++)
+
+//Function to swap bits at particular index in the number.
+int swapBit(int num, int i, int j){
+  //First check if both the bits is same or not
+  int iBit = (num >> i) & 1;
+  int jBit = (num >> j) & 1;
+
+  //If not then left shift 1 to that particular index and
+  //Take Xor with the original number (remember the property of Xor)
+  //The final Result will be the number with swapped bits.  
+  if (iBit != jBit){
+    num ^= (1 << i);
+    num ^= (1 << j);
+  }
+
+  return num;
+}
+
+int main()
+{
+  int num, i, j;
+  cin >> num >> i >> j;
+
+  cout << swapBit(num, i, j);
+  return 0;
+}
